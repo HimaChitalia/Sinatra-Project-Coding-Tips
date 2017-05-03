@@ -1,8 +1,52 @@
 <html>
   <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Coding Tips</title>
+    
+      <link href="/css/bootstrap.css" rel="stylesheet">
+      <link href="/css/bootstrap-responsive.css" rel="stylesheet">
+      <style>
+         body {
+           padding: 60px;
+           background-image:url('/img/escheresque_ste.png');
+         }
+      </style>
   </head>
   <body>
-    <h1>Hello, code lovers!</h1>
+    <!-- Adding Navbar -->
+
+    <div class="container ">
+
+      <div class="wrapper">
+        <nav>
+         <a href="/">Home</a>
+         <% if logged_in? %>
+           <a href="/tips">tips</a>
+           <a href="/tips/new">New Tip</a>
+           <a href="/logout"> Sign out</a>
+         <% else %>
+           <a href="/signup">Sign Up</a>
+           <a href="/login">Sign In</a>
+         <% end %>
+        </nav>
+
+         <%= yield %>
+
+        <footer class="branding">
+          <small>&copy; 2017 <strong>Coding Tips</strong></small>
+        </footer>
+      </div>
+
+    </div> <!-- .container -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+  <!--[if lt IE 7]>
+    <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
+    <script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>
+  <![endif]-->
+    <script src="js/bootstrap.js"></script>
   </body>
 </html>
