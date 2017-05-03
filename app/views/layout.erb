@@ -6,14 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Coding Tips</title>
-    
+
       <link href="/css/bootstrap.css" rel="stylesheet">
       <link href="/css/bootstrap-responsive.css" rel="stylesheet">
       <style>
          body {
            padding: 60px;
-           background-image:url('/img/escheresque_ste.png');
-         }
+           background-color: #434E56;
+           color: white;
+           }
       </style>
   </head>
   <body>
@@ -22,7 +23,7 @@
     <div class="container ">
 
       <div class="wrapper">
-        <nav>
+        <nav id= "main_nav" class="navbar navbar-default navbar-fixed-top">
          <a href="/">Home</a>
          <% if logged_in? %>
            <a href="/tips">tips</a>
