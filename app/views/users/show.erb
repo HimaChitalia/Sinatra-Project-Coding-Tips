@@ -1,0 +1,5 @@
+<p> Here are your coding tips, <%= @user.username %>
+ <% @user.tips.each do |tips| %>
+    <h5> <%= tip.language %> </h5>
+    <p> <%= tip.content %> </p>
+ <% end %>
