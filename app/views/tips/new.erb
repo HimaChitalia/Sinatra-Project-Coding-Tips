@@ -1,0 +1,18 @@
+<form action="/tips" method="POST">
+
+  <input type="text" id="content" name="content">
+
+  <h6> Either select a coding language for this tip below or create a new language </h6><br></br>
+  <%Language.all.each do |language|%>
+    <input type="radio" name="tip[language_id]" id="<%=language.id%>" value="<%=language.id%>">  <%=language.name%></input>
+  <%end%>
+
+  <br></br>
+
+  <h6>or, create a new language:</h6>
+  <br></br>
+  <P>Name:</P>
+    <input  type="text" name="language[name]" id="language_name"></input>
+  <br></br>
+    <input type="submit" value="Edit tip">
+</form>

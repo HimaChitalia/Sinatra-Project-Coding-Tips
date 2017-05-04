@@ -54,7 +54,9 @@ class UserController < ApplicationController
     erb :'/users/show'
   end
 
-  get '/tips'do
-    "Please see the list of your tips."
-  end
+
+
+  # get '/tips'do
+  #   "Please see the list of your tips."
+  # end
 end

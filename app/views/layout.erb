@@ -26,26 +26,31 @@
             <nav style="background-color: #ffffff" id="main_nav" class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
               <!-- Brand and toggle get grouped for better mobile display -->
-              <div class="navbar-header">
-                <a class="navbar-brand selected" href="/">Coding Tips</a>
-              </div>
+              <!-- <div class="navbar-header"> -->
+                <!-- <a class="navbar-brand selected" href="/">Coding Tips</a> -->
+              <!-- </div> -->
 
               <!-- Collect the nav links, forms, and other content for toggling -->
               <div >
 
                 <!-- Main nav bar -->
-                <ul class="navbar-right nav navbar-nav">
+                <ul class="navbar-left nav navbar-nav pull-left">
+                    <li>
+                      <a href="/">Coding Tips</a>
+                    </li>
+                </ul>
+                <ul class="navbar-right nav navbar-nav pull-right">
                   <% if logged_in? %>
-                     <li>
-                       <a href="/user/tips">User's tips</a>
-                     </li>
-                     <li>
-                       <a href="/tips/new">New Tip</a>
-                     </li>
-                     <li>
-                       <a href="/logout"> Sign out</a>
-                     </li>
-                     <% else %>
+                    <li>
+                      <a href="/user/tips">User's tips</a>
+                    </li>
+                    <li>
+                      <a href="/tips/new">New Tip</a>
+                    </li>
+                    <li>
+                      <a href="/logout"> Sign out</a>
+                    </li>
+                    <% else %>
                       <li>
                         <a href="/signup">Sign Up</a>
                       </li>
@@ -53,7 +58,7 @@
                         <a href="/login">Sign In</a>
                       </li>
                     <% end %>
-                    </ul>
+                </ul>
               </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
           </nav>
@@ -65,7 +70,7 @@
 
     </div> <!-- .container -->
 
-    <div class="container">
+    <div class="container-fluid">
      <footer id="footer">
        <p class="mx-auto">&copy; 2017 <strong>Coding Tips</strong></p>
      </footer>
