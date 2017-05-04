@@ -9,6 +9,8 @@
 
       <link href="/css/bootstrap.css" rel="stylesheet">
       <link href="/css/bootstrap-responsive.css" rel="stylesheet">
+      <link href="/css/style.css" rel="stylesheet">
+
       <style>
          body {
            padding: 60px;
@@ -21,28 +23,53 @@
     <!-- Adding Navbar -->
 
     <div class="container ">
+            <nav style="background-color: #ffffff" id="main_nav" class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header">
+                <a class="navbar-brand selected" href="/">Coding Tips</a>
+              </div>
 
-      <div class="wrapper">
-        <nav id= "main_nav" class="navbar navbar-default navbar-fixed-top">
-         <a href="/">Home</a>
-         <% if logged_in? %>
-           <a href="/tips">tips</a>
-           <a href="/tips/new">New Tip</a>
-           <a href="/logout"> Sign out</a>
-         <% else %>
-           <a href="/signup">Sign Up</a>
-           <a href="/login">Sign In</a>
-         <% end %>
-        </nav>
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div >
+
+                <!-- Main nav bar -->
+                <ul class="navbar-right nav navbar-nav">
+                  <% if logged_in? %>
+                     <li>
+                       <a href="/user/tips">User's tips</a>
+                     </li>
+                     <li>
+                       <a href="/tips/new">New Tip</a>
+                     </li>
+                     <li>
+                       <a href="/logout"> Sign out</a>
+                     </li>
+                     <% else %>
+                      <li>
+                        <a href="/signup">Sign Up</a>
+                      </li>
+                      <li>
+                        <a href="/login">Sign In</a>
+                      </li>
+                    <% end %>
+                    </ul>
+              </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+          </nav>
 
          <%= yield %>
 
-        <footer class="branding">
-          <small>&copy; 2017 <strong>Coding Tips</strong></small>
-        </footer>
+
       </div>
 
     </div> <!-- .container -->
+
+    <div class="container">
+     <footer id="footer">
+       <p class="mx-auto">&copy; 2017 <strong>Coding Tips</strong></p>
+     </footer>
+   </div>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
   <!--[if lt IE 7]>
     <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
