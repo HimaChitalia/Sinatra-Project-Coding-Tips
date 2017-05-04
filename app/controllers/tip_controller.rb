@@ -24,10 +24,15 @@ class TipController < ApplicationController
     end
 
     post '/tips' do
-        if !params[:content].empty?
-            @tip = tip.create(content: params[:content])
-            # @tip.user = current_user
-            @tip.language.id = params[:language_id]
+        if !params[:content].nil?
+            @tip = Tip.create(content: params[:content])
+            @tip.user = current_user
+            if !params[:language][:name].nil?
+              @tip.language = Language.create(name: params[:language][:name])
+            else
+              @tip.language.id = params[:language_id]
+            end
+            binding.pry
             @tip.save
             @user = @tip.user
             erb :"/tips/tips"
@@ -38,8 +43,12 @@ class TipController < ApplicationController
 
     get '/tips/:id' do
         if logged_in?
-            @tip = tip.find_by_id(params[:id])
+          @tip = Tip.find_by_id(params[:id])
+          if !@tip.nil?
             erb :'/tips/show'
+          else
+            "Ummm... looks like coding tip ##{params[:id]} doesn't exit. Are you trying to see anyother coding tips?"
+          end
         else
             redirect "/login"
         end
@@ -47,7 +56,7 @@ class TipController < ApplicationController
 
     get '/tips/:id/edit' do
         if logged_in?
-            @tip = tip.find_by_id(params[:id])
+            @tip = Tip.find_by_id(params[:id])
             if @tip.user.username == current_user.username
                 erb :'/tips/edit'
             else
@@ -60,7 +69,7 @@ class TipController < ApplicationController
     end
 
     patch '/tips/:id' do
-        @tip = tip.find_by_id(params[:id])
+        @tip = Tip.find_by_id(params[:id])
         if !params[:content].empty?
             @tip.update(:content => params[:content])
             @tip.language.id = params[:language_id]
@@ -73,7 +82,7 @@ class TipController < ApplicationController
     end
 
     get '/tips/:id/delete' do
-        @tip = tip.find_by_id(params[:id])
+        @tip = Tip.find_by_id(params[:id])
         if logged_in?
             if current_user == @tip.user
                 @tip.destroy

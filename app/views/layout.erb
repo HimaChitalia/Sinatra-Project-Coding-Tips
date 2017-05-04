@@ -19,9 +19,9 @@
            }
       </style>
   </head>
-  <body>
+  <body class="Site" >
     <!-- Adding Navbar -->
-
+    <main class="Site-content">
     <div class="container ">
             <nav style="background-color: #ffffff" id="main_nav" class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
@@ -62,17 +62,17 @@
               </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
           </nav>
-
+      <div id="main-content" >
          <%= yield %>
 
-
+       </div>
       </div>
 
     </div> <!-- .container -->
-
+  </main>
     <div class="container-fluid">
      <footer id="footer">
-       <p class="mx-auto">&copy; 2017 <strong>Coding Tips</strong></p>
+       <p>&copy; 2017 <strong>Coding Tips</strong></p>
      </footer>
    </div>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>

@@ -4,7 +4,8 @@
 <form action="/tips/<%=@tip.id%>" method="POST">
 
   <input type="hidden" name="_method" value="PATCH">
-  <input type="text" id="content" name="content" value="<%=@tip.content%>">
+
+  <textarea type="text" id="content" name="content"><%=@tip.content%></textarea><br>
 
   <h6> Either select a coding language for this tip below or create a new language </h6><br></br>
   <%Language.all.each do |language|%>
