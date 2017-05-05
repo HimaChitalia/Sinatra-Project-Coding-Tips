@@ -1,25 +1,25 @@
 source 'http://rubygems.org'
+ruby '2.3.1'
 
 gem 'sinatra'
 gem 'activerecord', :require => 'active_record'
 gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
 gem 'rake'
 gem 'require_all'
-gem 'thin'
 gem 'sqlite3', :group => :development
+gem 'thin'
 gem 'shotgun', :group => :development
 gem 'pry'
-gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt'
 gem "tux"
 gem 'rack-flash3'
-gem 'heroku', '~> 3.99', '>= 3.99.1'
 
 group :test do
   gem 'rspec'
+  gem 'capybara'
   gem 'rack-test'
   gem 'database_cleaner', git: 'https://github.com/bmabey/database_cleaner.git'
 end
-
 
 group :production do
   gem 'pg'
