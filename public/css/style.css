@@ -151,3 +151,25 @@
   height: 0;
   line-height: 0;
 }
+
+
+/*//// LINKS /////*/
+
+a:link {
+    color: #66FFFF;
+}
+
+/* visited link */
+a:visited {
+    color: pink;
+}
+
+/* mouse over link */
+a:hover {
+    background-color: gray;
+}
+
+/* selected link */
+a:active {
+    color: orange;
+}

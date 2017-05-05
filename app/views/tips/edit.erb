@@ -9,7 +9,7 @@
 
   <h4 style="color: #66FFFF"> Either select a coding language for this tip or create a new language </h4>
   <%Language.all.each do |language|%>
-    <input type="radio" name="tip[language_id]" id="<%=language.id%>" value="<%=language.id%>" <%='checked' if language.id == @tip.language.id %>><%=language.name%></input>
+    <input type="radio" name="tip[language_id]" id="<%=language.id%>" value="<%=language.id%>" <%='checked' if language.id == @tip.language.id %>><%=language.name%></input></br>
   <%end%>
 
 </br></br>

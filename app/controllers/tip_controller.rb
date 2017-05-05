@@ -33,7 +33,7 @@ class TipController < ApplicationController
               @tip.language.id = params[:language_id]
             end
             @tip.save
-            binding.pry
+            # binding.pry
             @user = @tip.user
             redirect to "/tips/#{@tip.id}"
         else
@@ -42,12 +42,13 @@ class TipController < ApplicationController
     end
 
     get '/tips/:id' do
+      @id = params[:id]
         if logged_in?
           @tip = Tip.find_by_id(params[:id])
           if !@tip.nil?
             erb :'/tips/show'
           else
-            "Ummm... looks like coding tip ##{params[:id]} doesn't exit. Are you trying to see any other coding tips?"
+            erb :'/tips/show_error'
           end
         else
             redirect "/login"
@@ -60,8 +61,7 @@ class TipController < ApplicationController
             if @tip.user.username == current_user.username
                 erb :'/tips/edit'
             else
-                flash[:message] = "Only #{current_user.username} is authorised to edit coding tip ##{@tip.id}."
-                erb :'/tips/tips'
+                erb :'/tips/edit_error'
             end
         else
             redirect "/login"
@@ -72,15 +72,20 @@ class TipController < ApplicationController
         @tip = Tip.find_by_id(params[:id])
         if !params[:content].empty?
             @tip.update(:content => params[:content])
-            if !params[:language][:name].nil? || !params[:language][:name].empty?
-              @tip.language = Language.create(name: params[:language][:name])
+            # if !params[:language][:name].nil? || !params[:language][:name].empty?
+            #   @tip.language = Language.create(name: params[:language][:name])
+            # else
+            #   @tip.language.id = params[:language_id]
+            # end
+            if params[:language][:name].nil? || params[:language][:name].empty?
+              @tip.language_id = params[:tip][:language_id]
             else
-              @tip.language.id = params[:language_id]
+              @tip.language = Language.create(name: params[:language][:name])
             end
-            # @tip.language.id = params[:language_id]
             @user = @tip.user
             @tip.save
-            erb :"/tips/tips"
+            # binding.pry
+            redirect "/tips/#{@tip.id}"
         else
             redirect "/tips/#{@tip.id}/edit"
         end
