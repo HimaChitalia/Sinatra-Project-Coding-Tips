@@ -1,4 +1,4 @@
 <% Tip.all.each.with_index(1) do |t, index|%>
-    <h4 style="color: #66FFFF"><%= index %>. <%= t.content %> </h4>
-    <p>Language: <%= t.language.name %>
+    <h4 style="color: #66FFFF"><a href="/tips/<%= t.id %>"><%= index %>. <%= t.content %></a></h4>
+    <p>Language: <%= t.language.name %></br></br>
 <% end %>

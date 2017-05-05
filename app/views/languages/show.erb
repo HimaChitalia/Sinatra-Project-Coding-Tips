@@ -1,0 +1,6 @@
+<h4 style="color: #66FFFF">Please see below list of the Coding Tips for the <%= @language.capitalize %>.</h4></br></br>
+
+<% @tips.each.with_index(1) do |tip, index| %>
+  <h4 style="color: #66FFFF"><a href="/tips/<%= tip.id %>"><%=index%>.  <%= tip.content %></a></h4>
+  <p>User: <%= tip.user.username %> </p></br>
+<% end %>

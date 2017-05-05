@@ -4,7 +4,7 @@ class TipController < ApplicationController
 
     get '/:slug/tips' do
       @user = User.find_by_slug(params[:slug])
-        if logged_in? && session[:user_id] == @user.id 
+        if logged_in? && session[:user_id] == @user.id
             erb :'/users/tips'
         else
             redirect to "/login"
@@ -16,11 +16,11 @@ class TipController < ApplicationController
     end
 
     get '/tips/new' do
-        if logged_in?
-            erb :'/tips/new'
-        else
-            redirect "/login"
-        end
+      if logged_in?
+          erb :'/tips/new'
+      else
+          redirect "/login"
+      end
     end
 
     post '/tips' do

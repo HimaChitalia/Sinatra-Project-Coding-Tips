@@ -6,5 +6,6 @@ end
 
 use Rack::MethodOverride
 use UserController
+use LanguageController
 use TipController
 run ApplicationController
