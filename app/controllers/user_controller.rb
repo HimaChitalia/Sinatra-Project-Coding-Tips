@@ -54,7 +54,7 @@ class UserController < ApplicationController
       @user = User.find_by_slug(params[:slug])
       erb :'/users/show'
     else
-      redirect to '/login'
+      redirect to '/tips'
     end
   end
 
