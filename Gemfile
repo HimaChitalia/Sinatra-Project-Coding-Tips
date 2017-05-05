@@ -12,6 +12,7 @@ gem 'pry'
 gem 'bcrypt', '~> 3.1.7'
 gem "tux"
 gem 'rack-flash3'
+gem 'acts_as_votable', '~> 0.10.0'
 
 group :test do
   gem 'rspec'
