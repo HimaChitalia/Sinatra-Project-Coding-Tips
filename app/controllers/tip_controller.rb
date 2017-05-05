@@ -30,7 +30,7 @@ class TipController < ApplicationController
             if !params[:language][:name].nil? || !params[:language][:name].empty?
               @tip.language = Language.create(name: params[:language][:name])
             else
-              @tip.language.id = params[:language_id]
+              @tip.language_id = params[:language_id]
             end
             @tip.save
             # binding.pry
