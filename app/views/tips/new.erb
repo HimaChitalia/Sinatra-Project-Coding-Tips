@@ -1,17 +1,17 @@
 <form action="/tips" method="POST">
-<h4> Please write your Coding Tip content below. </h4>
-  <textarea type="text" id="content" name="content">Tip Description</textarea><br>
+<h4 style="color: #66FFFF"> Please write your Coding Tip content below. </h4>
+  <textarea rows="5" type="text" id="content" name="content">Tip Description</textarea>  </br></br>
 
-  <h4> Either select a coding language for this tip below or create a new language </h4>
+  <h4 style="color: #66FFFF"> Either select a coding language for this tip or create a new language </h4>
   <%Language.all.each do |language|%>
-    <input type="radio" name="tip[language_id]" id="<%=language.id%>" value="<%=language.id%>">  <%=language.name%></input>
-  <%end%>
+    <input type="radio" name="tip[language_id]" id="<%=language.id%>" value="<%=language.id%>">  <%=language.name%></input></br>
+  <%end%>  </br></br>
 
-  <br>
 
-  <h4>or, create a new language:</h4>
-  <h4>Language:</h4>
-    <input  type="text" name="language[name]" id="language_name"></input>
-  <br></br>
+
+  <h4 style="color: #66FFFF">Create a new language:</h4>
+  <p>Language:  <input  type="text" name="language[name]" id="language_name"></input></p>
+
+  </br></br>
     <input type="submit" value="Create Coding Tip">
 </form>

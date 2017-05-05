@@ -42,7 +42,7 @@
                 <ul class="navbar-right nav navbar-nav pull-right">
                   <% if logged_in? %>
                     <li>
-                      <a href="/user/tips">User's tips</a>
+                      <a href="/<%=current_user.slug%>/tips"><%=current_user.username%>'s tips</a>
                     </li>
                     <li>
                       <a href="/tips/new">New Tip</a>

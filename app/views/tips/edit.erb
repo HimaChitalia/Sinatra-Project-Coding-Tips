@@ -1,21 +1,20 @@
-<h5><%=@tip.content%></h5>
-<p>Language- <%=@tip.language%></h5>
+<h4 style="color: #66FFFF"><%=@tip.content%></h4>
+<p>Language- <%=@tip.language.name%></p>
 
 <form action="/tips/<%=@tip.id%>" method="POST">
 
   <input type="hidden" name="_method" value="PATCH">
 
-  <textarea type="text" id="content" name="content"><%=@tip.content%></textarea><br>
+  <textarea rows="5" type="text" id="content" name="content"><%=@tip.content%></textarea></br></br>
 
-  <h6> Either select a coding language for this tip below or create a new language </h6><br></br>
+  <h4 style="color: #66FFFF"> Either select a coding language for this tip or create a new language </h4>
   <%Language.all.each do |language|%>
     <input type="radio" name="tip[language_id]" id="<%=language.id%>" value="<%=language.id%>" <%='checked' if language.id == @tip.language.id %>><%=language.name%></input>
   <%end%>
 
-  <br></br>
+</br></br>
 
-  <h6>or, create a new language:</h6>
-  <br></br>
+  <h4 style="color: #66FFFF">Create a new language:</h>
   <P>Name:</P>
     <input  type="text" name="language[name]" id="language_name"></input>
   <br></br>
