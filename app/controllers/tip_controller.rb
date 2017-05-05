@@ -97,6 +97,8 @@ class TipController < ApplicationController
             if current_user == @tip.user
                 @tip.destroy
                 redirect '/tips'
+            else
+                erb :'tips/delete_error'
             end
         else
             redirect "/login"
