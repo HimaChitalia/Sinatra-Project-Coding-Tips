@@ -1,4 +1,10 @@
 <% Tip.all.each.with_index(1) do |t, index|%>
     <h4 style="color: #66FFFF"><a href="/tips/<%= t.id %>"><%= index %>. <%= t.content %></a></h4>
     <p>Language: <%= t.language.name %></br></br>
+    <div class="vote circle">
+      <div class="increment up"></div>
+      <div class="increment down"></div>
+
+      <div class="count">8</div>
+    </div>
 <% end %>
