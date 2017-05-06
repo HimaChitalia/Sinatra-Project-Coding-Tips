@@ -19,4 +19,9 @@
     <input  type="text" name="language[name]" id="language_name"></input>
   <br></br>
     <input type="submit" value="Edit tip">
+
+    <form action="/tips/<%=@tip.id%>/cancel" method="GET">
+        <input type="submit" value ="Cancel Edit">
+    </form>
+
 </form>
