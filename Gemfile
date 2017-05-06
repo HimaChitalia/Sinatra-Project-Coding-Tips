@@ -1,5 +1,4 @@
 source 'http://rubygems.org'
-ruby '2.3.1'
 
 gem 'sinatra'
 gem 'activerecord', :require => 'active_record'
@@ -19,9 +18,4 @@ group :test do
   gem 'capybara'
   gem 'rack-test'
   gem 'database_cleaner', git: 'https://github.com/bmabey/database_cleaner.git'
-end
-
-group :production do
-  gem 'pg'
-  gem 'rails_12factor'
 end
