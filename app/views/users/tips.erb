@@ -1,7 +1,7 @@
 <% if @user.tips.size >= 1 %>
   <% @user.tips.each.with_index(1) do |tip, index| %>
     <h4 style="color: #66FFFF"><a href="/tips/<%= tip.id %>"><%= index %>. <%= tip.content %></a> </h4>
-    <p>Language:  <%= tip.language.name %> </p></br>
+    <p>Language:  <%= tip.language.name.upcase %> </p></br>
   <% end %>
 <% else %>
   <h4 style="color: #66FFFF"> Looks like you haven't created any tips so far! Please <a href="/tips/new">Create a Tip</a>, and come back to see it. </h4>

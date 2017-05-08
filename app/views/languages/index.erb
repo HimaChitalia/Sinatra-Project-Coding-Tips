@@ -1,4 +1,4 @@
 <h4 style="color: #66FFFF"> Please see any of the below languages to see the coding tips. </h4></br>
 <% Language.all.each.with_index(1) do |language, index| %>
-  <h4 style="color: #66FFFF"><a href="/tips/language/<%=language.name%>"><%=index%>.  <%=language.name.capitalize %></a></h4>
+  <h4 style="color: #66FFFF"><a href="/tips/language/<%=language.name%>"><%=index%>.  <%=language.name.upcase %></a></h4>
 <% end %>
