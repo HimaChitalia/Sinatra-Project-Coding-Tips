@@ -10,12 +10,18 @@ class UserController < ApplicationController
 
   post '/signup' do
     # binding.pry
-    if params[:username] == "" || params[:password] == "" || params[:email] == ""
+    if params[:username] == "" || params[:password] == "" || params[:email] == "" || params[:confirm_password] == ""
       redirect to '/signup'
       # binding.pry
     else
-      user = User.create(username: params[:username], password: params[:password], email: params[:email])
+      user = User.create(username: params[:username], password: params[:password], password_confirmation: params[:confirm_password], email: params[:email])
+      unless user.valid?
+        return erb :'users/password_error' if user.errors[:password_confirmation].any?
+        return erb :'users/username_error' if user.errors[:username].any?
+        return erb :'users/email_error' if user.errors[:email].any?
+      end
       session[:user_id] = user.id
+      binding.pry
       redirect to '/tips'
     end
   end
@@ -33,7 +39,7 @@ class UserController < ApplicationController
     user = User.find_by(username: params[:username])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect to '/tips'
+      redirect to "#{user.username}/tips"
     else
       redirect to '/signup'
     end

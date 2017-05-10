@@ -15,8 +15,8 @@ class TipController < ApplicationController
     end
 
     post '/tips' do
-      if !params[:content].nil?
-          @tip = current_user.tips.create(content: params[:content])
+      @tip = current_user.tips.create(content: params[:content])
+      if @tip
           if params[:language][:name].nil? || params[:language][:name].empty?
             @tip.language_id = params[:tip][:language_id]
           else
@@ -59,8 +59,8 @@ class TipController < ApplicationController
     end
 
     patch '/tips/:id' do
-      @tip = Tip.find_by_id(params[:id])
-      if !params[:content].empty? && @tip.user.username == current_user.username
+      @tip = current_user.tips.find_by(params[:id])
+      if  @tip
           @tip.update(:content => params[:content])
           if params[:language][:name].nil? || params[:language][:name].empty?
             @tip.language_id = params[:tip][:language_id]
