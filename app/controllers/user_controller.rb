@@ -58,4 +58,13 @@ class UserController < ApplicationController
     end
   end
 
+  get '/:slug/tips' do
+    @user = User.find_by_slug(params[:slug])
+    if logged_in? && session[:user_id] == @user.id
+        erb :'/users/tips'
+    else
+        redirect to "/login"
+    end
+  end
+
 end
