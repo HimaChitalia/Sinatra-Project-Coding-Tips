@@ -25,8 +25,7 @@ class TipController < ApplicationController
 
     post '/tips' do
       if !params[:content].nil?
-          @tip = Tip.create(content: params[:content])
-          @tip.user = current_user
+          @tip = current_user.tips.create(content: params[:content])
           if params[:language][:name].nil? || params[:language][:name].empty?
             @tip.language_id = params[:tip][:language_id]
           else
@@ -34,7 +33,6 @@ class TipController < ApplicationController
             @tip.language_id = new_language.id
           end
           @tip.save
-          # binding.pry
           @user = @tip.user
           redirect to "/tips/#{@tip.id}"
       else
@@ -71,7 +69,7 @@ class TipController < ApplicationController
 
     patch '/tips/:id' do
       @tip = Tip.find_by_id(params[:id])
-      if !params[:content].empty?
+      if !params[:content].empty? && @tip.user.username == current_user.username
           @tip.update(:content => params[:content])
           if params[:language][:name].nil? || params[:language][:name].empty?
             @tip.language_id = params[:tip][:language_id]

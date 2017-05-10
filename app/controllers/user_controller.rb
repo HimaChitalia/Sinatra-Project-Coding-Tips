@@ -58,9 +58,4 @@ class UserController < ApplicationController
     end
   end
 
-
-
-  # get '/tips'do
-  #   "Please see the list of your tips."
-  # end
 end
