@@ -39,7 +39,7 @@ class UserController < ApplicationController
     user = User.find_by(username: params[:username])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect to "#{user.username}/tips"
+      redirect to "#{user.username.downcase}/tips"
     else
       redirect to '/signup'
     end
@@ -61,15 +61,6 @@ class UserController < ApplicationController
       erb :'/users/show'
     else
       redirect to '/tips'
-    end
-  end
-
-  get '/:slug/tips' do
-    @user = User.find_by_slug(params[:slug])
-    if logged_in? && session[:user_id] == @user.id
-        erb :'/users/tips'
-    else
-        redirect to "/login"
     end
   end
 

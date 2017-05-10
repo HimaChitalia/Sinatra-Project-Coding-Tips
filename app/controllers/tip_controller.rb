@@ -2,6 +2,15 @@ class TipController < ApplicationController
 
     use Rack::Flash
 
+    get '/:slug/tips' do
+      @user = User.find_with_slug(params[:slug])
+      if logged_in? && session[:user_id] == @user.id
+          erb :'/users/tips'
+      else
+          redirect to "/login"
+      end
+    end
+
     get '/tips' do
       erb :'/tips/tips'
     end
@@ -16,7 +25,7 @@ class TipController < ApplicationController
 
     post '/tips' do
       @tip = current_user.tips.create(content: params[:content])
-      if @tip
+      if @tip.valid?
           if params[:language][:name].nil? || params[:language][:name].empty?
             @tip.language_id = params[:tip][:language_id]
           else
