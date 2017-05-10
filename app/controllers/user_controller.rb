@@ -13,11 +13,15 @@ class UserController < ApplicationController
     if params[:username] == "" || params[:password] == "" || params[:email] == "" || params[:confirm_password] == ""
       redirect to '/signup'
       # binding.pry
-    elsif params[:password] != params[:confirm_password]
-      erb :'users/password_error'
     else
-      user = User.create(username: params[:username], password: params[:password], email: params[:email])
+      user = User.create(username: params[:username], password: params[:password], password_confirmation: params[:confirm_password], email: params[:email])
+      unless user.valid?
+        return erb :'users/password_error' if user.errors[:password].any?
+        return erb :'users/username_error' if user.errors[:username].any?
+        return erb :'users/email_error' if user.errors[:username].any?
+      end
       session[:user_id] = user.id
+      binding.pry
       redirect to '/tips'
     end
   end
