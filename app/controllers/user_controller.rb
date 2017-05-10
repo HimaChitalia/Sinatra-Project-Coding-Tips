@@ -16,9 +16,9 @@ class UserController < ApplicationController
     else
       user = User.create(username: params[:username], password: params[:password], password_confirmation: params[:confirm_password], email: params[:email])
       unless user.valid?
-        return erb :'users/password_error' if user.errors[:password].any?
+        return erb :'users/password_error' if user.errors[:password_confirmation].any?
         return erb :'users/username_error' if user.errors[:username].any?
-        return erb :'users/email_error' if user.errors[:username].any?
+        return erb :'users/email_error' if user.errors[:email].any?
       end
       session[:user_id] = user.id
       binding.pry
@@ -61,6 +61,15 @@ class UserController < ApplicationController
       erb :'/users/show'
     else
       redirect to '/tips'
+    end
+  end
+
+  get '/:slug/tips' do
+    @user = User.find_by_slug(params[:slug])
+    if logged_in? && session[:user_id] == @user.id
+        erb :'/users/tips'
+    else
+        redirect to "/login"
     end
   end
 
