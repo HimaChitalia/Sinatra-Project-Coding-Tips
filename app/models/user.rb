@@ -5,8 +5,7 @@ class User < ActiveRecord::Base
   has_many :tips
   has_many :languages, through: :tips
 
-  validates_presence_of  :username, :email, :password_digest
-  validates_uniqueness_of :username, :email
+  validates :username, :email, presence: true, uniqueness: true
 
   include Slugifiable::InstanceMethods
   extend Slugifiable::ClassMethods

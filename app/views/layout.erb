@@ -22,64 +22,56 @@
   <body class="Site" >
     <!-- Adding Navbar -->
     <main class="Site-content">
-    <div class="container ">
-            <nav style="background-color: #ffffff" id="main_nav" class="navbar navbar-default navbar-fixed-top">
-            <div class="container-fluid">
-              <!-- Brand and toggle get grouped for better mobile display -->
-              <!-- <div class="navbar-header"> -->
-                <!-- <a class="navbar-brand selected" href="/">Coding Tips</a> -->
-              <!-- </div> -->
+      <div class="container ">
+        <nav style="background-color: #ffffff" id="main_nav" class="navbar navbar-default navbar-fixed-top">
+          <div class="container-fluid">
+            <div >
+              <!-- Main nav bar -->
+              <ul class="navbar-left nav navbar-nav pull-left">
+                <li>
+                  <a href="/">Coding Tips</a>
+                </li>
+              </ul>
+              <ul class="navbar-right nav navbar-nav pull-right">
+                <% if logged_in? %>
+                  <li>
+                    <a href="/<%=current_user.slug%>/tips"><%=current_user.username%>'s tips</a>
+                  </li>
+                  <li>
+                    <a href="/tips/new">New Tip</a>
+                  </li>
+                  <li>
+                    <a href="/logout"> Sign out</a>
+                  </li>
+                <% else %>
+                  <li>
+                    <a href="/signup">Sign Up</a>
+                  </li>
+                  <li>
+                    <a href="/login">Sign In</a>
+                  </li>
+                <% end %>
+              </ul>
+            </div><!-- /.navbar-collapse -->
+          </div><!-- /.container-fluid -->
+        </nav>
 
-              <!-- Collect the nav links, forms, and other content for toggling -->
-              <div >
-
-                <!-- Main nav bar -->
-                <ul class="navbar-left nav navbar-nav pull-left">
-                    <li>
-                      <a href="/">Coding Tips</a>
-                    </li>
-                </ul>
-                <ul class="navbar-right nav navbar-nav pull-right">
-                  <% if logged_in? %>
-                    <li>
-                      <a href="/<%=current_user.slug%>/tips"><%=current_user.username%>'s tips</a>
-                    </li>
-                    <li>
-                      <a href="/tips/new">New Tip</a>
-                    </li>
-                    <li>
-                      <a href="/logout"> Sign out</a>
-                    </li>
-                    <% else %>
-                      <li>
-                        <a href="/signup">Sign Up</a>
-                      </li>
-                      <li>
-                        <a href="/login">Sign In</a>
-                      </li>
-                    <% end %>
-                </ul>
-              </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
-          </nav>
-      <div id="main-content" >
-         <%= yield %>
-
-       </div>
+        <div id="main-content" >
+           <%= yield %>
+        </div>
       </div>
-
-    </div> <!-- .container -->
-  </main>
+  </div> <!-- .container -->
+ </main>
     <div class="container-fluid">
      <footer id="footer">
        <p>&copy; 2017 <strong>Coding Tips</strong></p>
      </footer>
-   </div>
+    </div>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-  <!--[if lt IE 7]>
-    <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
-    <script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>
-  <![endif]-->
+    <!--[if lt IE 7]>
+      <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
+      <script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>
+    <![endif]-->
     <script src="js/bootstrap.js"></script>
   </body>
 </html>
